@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+  <title>SakumLapa</title>
+
+</head>
+<body>
+  <h1>Fucking Good</h1>
+  <a href="/AddNumber">Pievienot Nummuru</a>
+  <table border="1">
+      <tr>
+        <th>Id</th>
+          <th>numb</th>
+          <th>Text</th>
+          <th>Actions</th>
+      </tr>
+      <tr th:each = "Number: ${NumberList}">
+      <td th:text="${Number.Id}">id</td>
+          <td th:text="${Number.number}">id</td>
+          <td th:text="${Number.text}">text</td>
+          <td>
+          <form th:action="@{|/delete/${Number.id}|}" method="post">
+           <button type="submit">Delete</button>
+         </form>
+         </td>
+         <td>
+         <form th:action="@{|/edit_number/${Number.id}|}" method="post">
+          <button type="submit">Update</button>
+        </form>
+        </td>
+      </tr>
+
+  </table>
+    </body>
+</html>

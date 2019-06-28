@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+  <title>SakumLapa</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="style/style.css">
+ 
+
+</head>
+<body>
+<link href="menu.html" rel="import" />
+  <h1>Sākum Lapa</h1>
+  <link href="menu.html" rel="import" />
+  <a href="/AddNumber">Pievienot Nummuru</a>
+<table class="table table-striped" >
+      <tr>
+      	  <th scope="col" align="left">ID</th>
+           <th scope="col" align="left">Number</th>
+           <th scope="col" align="left">Interesting Fact</th>
+           <th scope="col" align="left">Action</th>
+      </tr>
+      <tr th:each = "Number: ${NumberList}">
+     	<th scope="row" th:text="${Number.Id}">id</th>
+          <td th:text="${Number.number}">number</td>
+          <td th:text="${Number.text}">text</td>
+          <td>
+                   <form th:action="@{|/delete/${Number.id}|}" method="post">
+           <button type="submit">Delete</button>
+         </form>
+         </td>
+         <td>
+         <a th:href="@{|/edit_number/${Number.id}|}">Edit</a>
+        </form>
+        </td>
+      </tr>
+
+  </table>
+    </body>
+</html>

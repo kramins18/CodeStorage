@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>NumberFact - Opps! </title>
+  <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <script>
+function callAPI() {
+  console.log(frm.fname.value);
+if (!isNaN(parseInt(frm.fname.value))) {
+  window.open("/index/"+(parseInt(frm.fname.value)),"_self");
+  }
+  else{
+  alert("Sorry , Input has to be number");
+}
+}
+function searchDB() {
+if (!isNaN(parseInt(test.dbsearch.value))) {
+  window.open("/findbyid/"+(parseInt(test.dbsearch.value)),"_self");
+  }
+  else{
+  alert("Sorry , Input has to be number");
+}
+}
+</script>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/index/1"><img src="/img/logo.png" width="40px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/index/1">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/view_DataBase">View Database</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/roadmap">Road Map</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/notFound">Add NumberFact</a>
+            </li>
+          </ul>
+        <form id="test" class="form-inline">
+<input type="text" class="form-control" name="dbsearch" placeholder="Search in our DB" required>
+<button type="button" onclick="searchDB()" class="btn btn-danger" >Search</button>
+</form>
+        </div>
+      </nav>
+
+
+
+
+  <div class="fill">
+    <div class="row paddingtop5">
+      <div class="col-sm-6 mx-auto">
+        <p class="text-center numb2">Whhops! Looks like number you are looking for is not in our database</p>
+
+      </div>
+    </div>
+    <div class="row mx-auto">
+
+        <div class="col-auto ml-auto">
+          <img src="weneed.png" alt="">
+        </div>
+        <div class="col-sm-7 text-center mr-auto"><br>
+          <p class="numb_text text-center">If you know any interesting fact about any number feel free to Add your own fact about any number. Just Press Button Bellow!</p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Add Number & Fact</button>
+
+      </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Tell us something about this number!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="#" th:action="@{/save}" th:object="${number}" method="post">
+              <div class="form-group row">
+                <div class="col-sm-1">
+                </div>
+                <div class="col-sm-1">
+                  <label for="staticEmail" class="col-sm-2 col-form-label">Email: </label>
+                </div>
+                <div class="col-sm-4">
+                  <input type="email" class="form-control" id="email" placeholder="user@gmail.com">
+                </div>
+                <div class="col-sm-1">
+                  <label for="bane" class="col-sm-2 col-form-label">Number: </label>
+                </div>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="number" th:field="*{number}" placeholder="123">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1">
+                  <label for="Fact" class="col-sm-2 col-form-label">Fact: </label>
+                </div>
+                <div class="col-sm-9">
+                  <textarea class="form-control" placeholder="23 is the smallest number of integer..." id="text" th:field="*{text}" rows="3"></textarea>
+                </div>
+              </div>
+              <input type="hidden" th:field="*{type}" value="UserInput" />
+              <input type="hidden" th:field="*{found}" value="true" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
+            <button type="submit" class="btn btn-primary">Confirm</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

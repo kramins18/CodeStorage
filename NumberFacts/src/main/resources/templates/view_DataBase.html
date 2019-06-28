@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+  <title>NumberFact - Table view</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+</head>
+    <script>
+function callAPI() {
+  console.log(frm.fname.value);
+if (!isNaN(parseInt(frm.fname.value))) {
+  window.open("/index/"+(parseInt(frm.fname.value)),"_self");
+  }
+  else{
+  alert("Sorry , Input has to be number");
+}
+}
+function searchDB() {
+if (!isNaN(parseInt(test.dbsearch.value))) {
+  window.open("/findbyid/"+(parseInt(test.dbsearch.value)),"_self");
+  }
+  else{
+  alert("Sorry , Input has to be number");
+}
+}
+</script>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/index/1"><img src="/img/logo.png" width="40px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/index/1">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item  active">
+              <a class="nav-link" href="/view_DataBase">View Database</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/roadmap">Road Map</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/notFound">Add NumberFact</a>
+            </li>
+          </ul>
+        <form id="test" class="form-inline">
+<input type="text" class="form-control" name="dbsearch" placeholder="Search in our DB" required>
+<button type="button" onclick="searchDB()" class="btn btn-danger" >Search</button>
+</form>
+        </div>
+      </nav>
+
+<body>
+<div class="container-fluid justify-content-center" >
+<div class ="col-xs-12 col-sm-8 col-md-8 mx-auto">
+  
+<table class="table table-striped">
+      <tr>
+      	  <th scope="col">ID</th>
+           <th scope="col">Number</th>
+           <th scope="col">Interesting Fact</th>
+           <th scope="col" width="15%">Action</th>
+      </tr>
+      <tr th:each = "Number: ${NumberList}">
+     	<th scope="row" th:text="${Number.Id}">id</th>
+          <td th:text="${Number.number}">number</td>
+          <td th:text="${Number.text}">text</td>
+          <td>
+            <div class="form-inline">
+          <form th:action="@{|/delete/${Number.id}|}" method="post"  >
+           <button class="btn btn-success" type="submit">Delete</button>
+         </form>
+         <p> </p>
+          <form th:action="@{|/edit_number/${Number.id}|}" method="post"  >
+           <button type="submit" class="btn btn-success">Edit</button>
+         </form>
+
+       </td>
+</div>
+
+      </div>
+</div>
+  </table>
+    </body>
+</html>

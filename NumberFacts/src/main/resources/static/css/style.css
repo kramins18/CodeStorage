@@ -1,0 +1,34 @@
+html, body {
+width:100%;
+height:100%;
+}
+.fill {
+height: 100vh;
+background-image: url('http://www.freeimageslive.com/galleries/workplace/education/pics/numbers_border.jpg'
+);
+background-size: cover;
+background-position: center;
+ }
+.background{
+background-image: url("/img/02.png");
+}
+.margin_auto{
+  margin: auto;
+}
+.paddingtop5{
+  padding-top: 3%;
+}
+.numb_text{
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 30px;
+}
+.numb{
+font-family: 'Fredericka the Great', cursive;
+  font-size: 100px;;
+  float: right;
+}
+.numb2{
+font-family: 'Fredericka the Great', cursive;
+  font-size: 40px;  
+}
+

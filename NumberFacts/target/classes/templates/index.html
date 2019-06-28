@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>NumberFact - Home</title>
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+    </head>
+  <body>
+    <script>
+function callAPI() {
+  console.log(frm.fname.value);
+if (!isNaN(parseInt(frm.fname.value))) {
+  window.open("/index/"+(parseInt(frm.fname.value)),"_self");
+  }
+  else{
+  alert("Sorry , Input has to be number");
+}
+}
+function searchDB() {
+if (!isNaN(parseInt(test.dbsearch.value))) {
+  window.open("/findbyid/"+(parseInt(test.dbsearch.value)),"_self");
+  }
+  else{
+  alert("Sorry , Input has to be number");
+}
+}
+</script>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/index/1"><img src="/img/logo.png" width="40px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/view_DataBase">View Database</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/roadmap">Road Map</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/notFound">Add NumberFact</a>
+            </li>
+          </ul>
+        <form id="test" class="form-inline">
+<input type="text" class="form-control" name="dbsearch" placeholder="Search in our DB" required>
+<button type="button" onclick="searchDB()" class="btn btn-danger" >Search</button>
+</form>
+        </div>
+      </nav>
+
+
+
+<div class="fill">
+
+  <div class="row paddingtop5" >
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2"><p class="numb" th:text="${Number.number}">7</p></div>
+      <div class="col-sm-6"><p class="numb_text" th:text="${Number.text}">7 is the number of seconds it takes "Superman: Escape from Krypton" roller coaster to go from 0 to 100 miles per hour.</p>
+        </div>
+      <div class="col-sm-2"></div>
+  </div>
+  
+
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-8"><p class="numb2">Don't Be Shy! Try it Yourself</p></div>
+    </div>
+
+      <form id="frm">
+        <div class="form-row">
+          <div class="col-sm-4"></div>
+          <div class="form-group col-md-2">
+                <input type="text" class="form-control" name="fname"required>
+          </div>
+          <div class="form-group col-md-2">
+            <button type="button" onclick="callAPI()" class="btn btn-danger" >Try ME!</button>
+          </div>
+</div>
+</form>
+</div>
+</div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

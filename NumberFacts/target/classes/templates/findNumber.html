@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+  <title>SakumLapa</title>
+</head>
+<body>
+  <h2>find number</h2>
+  <form action="#" th:action="@{|/findbyid/${number}|}" th:object="${number}" method="post">
+    <table border="1">
+
+      <tr>
+        <td>Number:</td>
+        <td><input type="text" th:field="*{number}" /></td>
+      </tr>
+      
+      <tr>
+        <td><button type="submit">finds</button></td>
+      </tr>
+
+    </table>
+
+
+    </body>
+</html>
